@@ -13,10 +13,11 @@ class Solution:
         # Forward: z = dot(x, w) + b, y_hat = sigmoid(z)
         # Loss: L = 0.5 * (y_hat - y_true)^2
         # Return: (dL_dw rounded to 5 decimals, dL_db rounded to 5 decimals)
-        def sigmoid(z):
-            return 1/(1+np.exp(-z))
-        y_hat =sigmoid(x@w+b)
-        loss = 0.5*(y_hat- y_true)**2
-        w_loss= (y_hat- y_true)*y_hat*(1-y_hat)*x
-        bias_loss = (y_hat- y_true)*y_hat*(1-y_hat)
-        return (np.round(w_loss,5),np.round(bias_loss,5))
+        y_hat = 1/(1+np.exp(-(x@w+b)))
+        L = 0.5 *(y_hat-y_true)**2
+        dL_dw=(y_hat-y_true)*y_hat*(1-y_hat)*x
+        dL_db=(y_hat-y_true)*y_hat*(1-y_hat)
+        return (np.round(dL_dw,5),np.round(dL_db,5))
+
+
+
