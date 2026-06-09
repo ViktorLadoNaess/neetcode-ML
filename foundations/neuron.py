@@ -8,16 +8,12 @@ class Solution:
         # w: 1D weight array (same length as x)
         # b: scalar bias
         # activation: "sigmoid" or "relu"
-        #
         # Pre-activation: z = dot(x, w) + b
         # Sigmoid: σ(z) = 1 / (1 + exp(-z))
         # ReLU: max(0, z)
         # return round(your_answer, 5)
-        def sigmoid(z):
-            return 1/(1+np.exp(-z))
-        def relu(z):
-            return max(0.0,z)
-        if activation =='sigmoid':
-            return round(sigmoid(x@w+b),5)
+        z = x@w + b
+        if activation == 'sigmoid':
+            return round(1/(1+np.exp(-z)),5)
         else:
-            return round(relu(x@w+b),5)
+            return round(max(0.0,z),5)
